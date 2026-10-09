@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Auralis — Now Playing</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         AURALIS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/player.css"
+    >
+
+
+    <!-- =====================================================
+         HIDE PAGE UNTIL AUTHENTICATION IS CHECKED
+    ====================================================== -->
+
+    <style>
+
+        html.auth-checking body {
+            display: none;
+        }
+
+    </style>
+
+
+    <!-- =====================================================
+         PLAYER HEADER
+    ====================================================== -->
+
+    <style>
+
+        .player-header {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 18px 28px;
+
+            background: rgba(10, 10, 10, 0.6);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+
+        .player-header .back-btn {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            color: #fff;
+
+            font-size: 18px;
+
+            text-decoration: none;
+
+            transition:
+                background 0.15s ease,
+                transform 0.15s ease;
+        }
+
+
+        .player-header .back-btn:hover {
+
+            background: rgba(255, 255, 255, 0.16);
+
+            transform: translateX(-2px);
+        }
+
+
+        .player-header .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #fff;
+
+            font-weight: 700;
+
+            font-size: 15px;
+
+            text-decoration: none;
+
+            letter-spacing: 0.2px;
+        }
+
+
+        .player-header .brand img {
+
+            width: 22px;
+            height: 22px;
+
+            object-fit: contain;
+        }
+
+    </style>
+
+
+    <!-- =====================================================
+         FIREBASE AUTH GUARD
+    ====================================================== -->
+
+    <script type="module">
+
+        import {
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+        import {
+            auth
+        } from "../js/auth.js";
+
+
+        onAuthStateChanged(auth, (user) => {
+
+            /* User is not logged in */
+
+            if (!user) {
+
+                window.location.href = "login.html";
+
+                return;
+            }
+
+
+            /* User is logged in */
+
+            document.documentElement.classList.remove(
+                "auth-checking"
+            );
+
+        });
+
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PLAYER HEADER
+    ====================================================== -->
+
+    <header class="player-header">
+
+
+        <!-- Back button -->
+
+        <a
+            href="home.html"
+            class="back-btn"
+            aria-label="Back to home"
+        >
+            ‹
+        </a>
+
+
+        <!-- Auralis brand -->
+
+        <a
+            href="home.html"
+            class="brand"
+        >
+
+            <img
+                src="../banner/auralis.png"
+                alt="Auralis"
+            >
+
+            <span>Auralis</span>
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="background">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PLAYER
+    ====================================================== -->
+
+    <div
+        class="player"
+        id="playerRoot"
+    >
+
+
+        <!-- =================================================
+             LEFT SIDE — ALBUM ART
+        ================================================== -->
+
+        <div class="image-box">
+
+            <img
+                class="cover"
+                src=""
+                alt="Album art"
+            >
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT SIDE — PLAYER INFORMATION
+        ================================================== -->
+
+        <div class="panel">
+
+
+            <!-- =================================================
+                 SONG META
+            ================================================== -->
+
+            <div class="panel-top">
+
+
+                <div class="meta-row">
+
+                    <span id="plays"></span>
+
+                    <span id="duration"></span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     TITLE + LIKE
+                ================================================== -->
+
+                <div class="title-row">
+
+
+                    <div class="title-col">
+
+                        <h1 id="song-title"></h1>
+
+                        <p id="artist-name"></p>
+
+                    </div>
+
+
+                    <!-- Like button -->
+
+                    <button
+                        id="likeBtn"
+                        class="icon-btn"
+                        onclick="toggleLike()"
+                        aria-label="Like"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PROGRESS BAR
+            ================================================== -->
+
+            <div class="progress-wrap">
+
+                <input
+                    type="range"
+                    id="progress"
+                    value="0"
+                    step="1"
+                    min="0"
+                >
+
+
+                <div class="time">
+
+                    <span id="current-time">
+                        0:00
+                    </span>
+
+                    <span id="total-duration">
+                        0:00
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PLAYER CONTROLS
+            ================================================== -->
+
+            <div class="buttons">
+
+
+                <!-- Previous -->
+
+                <button
+                    id="prevBtn"
+                    onclick="prevSong()"
+                    aria-label="Previous"
+                >
+                    ⏮
+                </button>
+
+
+                <!-- Play / Pause -->
+
+                <button
+                    id="play"
+                    onclick="playSong()"
+                    aria-label="Play"
+                >
+                    ▶
+                </button>
+
+
+                <!-- Next -->
+
+                <button
+                    id="nextBtn"
+                    onclick="nextSong()"
+                    aria-label="Next"
+                >
+                    ⏭
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SONG DESCRIPTION
+            ================================================== -->
+
+            <p id="song-description"></p>
+
+
+
+            <!-- =================================================
+                 SPOTIFY BUTTON
+            ================================================== -->
+
+            <a
+                class="spotify-btn"
+                id="spotifyLink"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Listen Full Song on Spotify
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             PLAYLIST / UP NEXT
+        ====================================================== -->
+
+        <div class="playlist-panel">
+
+            <div class="playlist-label">
+                Up next
+            </div>
+
+
+            <div
+                class="playlist"
+                id="playlist"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             AUDIO
+        ====================================================== -->
+
+        <audio id="audio"></audio>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PLAYER JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/player.js"></script>
+
+
+</body>
+
+</html>

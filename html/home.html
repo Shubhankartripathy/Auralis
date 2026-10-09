@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Auralis</title>
+
+    <!-- HOME PAGE CSS -->
+    <link rel="stylesheet" href="../css/home.css">
+
+
+    <!-- =========================================
+         AUTH CHECKING
+    ========================================== -->
+
+    <style>
+        html.auth-checking body {
+            display: none;
+        }
+    </style>
+
+
+    <!-- =========================================
+         FIREBASE AUTH GUARD
+    ========================================== -->
+
+    <script type="module">
+
+        import {
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+        import {
+            auth
+        } from "../js/auth.js";
+
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (!user) {
+
+                /*
+                 * User is not logged in.
+                 * Send them to login page.
+                 */
+
+                window.location.href = "login.html";
+
+                return;
+            }
+
+
+            /*
+             * User is logged in.
+             * Show the page.
+             */
+
+            document.documentElement.classList.remove(
+                "auth-checking"
+            );
+
+        });
+
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <nav>
+
+        <!-- LEFT SIDE -->
+        <div class="left">
+
+            <img
+                src="../banner/auralis.png"
+                class="nav-logo"
+                alt="Auralis Logo"
+            >
+
+            <h2>Auralis</h2>
+
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="right">
+
+            <div
+                class="profile-circle"
+                id="profileLetter"
+                onclick="openProfile()"
+            >
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         PAGE TITLE
+    ========================================== -->
+
+    <h1 class="title">
+        Popular Songs
+    </h1>
+
+
+
+    <!-- =========================================
+         WELCOME MESSAGE
+    ========================================== -->
+
+    <div
+        id="welcomeMessage"
+        class="welcome-message"
+    >
+    </div>
+
+
+
+    <!-- =========================================
+         LIKED SONGS SECTION
+
+         IMPORTANT:
+         This section is NOT written here.
+
+         home.js creates it dynamically.
+
+         This prevents the duplicate
+         "Most Liked / You Like Most" problem.
+    ========================================== -->
+
+
+
+    <!-- =========================================
+         SONG CONTAINER
+
+         home.js loads the songs from
+         the iTunes API and creates cards here.
+    ========================================== -->
+
+    <div
+        class="container"
+        id="songContainer"
+    >
+    </div>
+
+
+
+    <!-- =========================================
+         PROFILE
+    ========================================== -->
+
+    <script>
+
+        function openProfile() {
+
+            window.location.href =
+                "profile.html";
+
+        }
+
+
+
+        /* =========================================
+           PROFILE PHOTO / LETTER
+        ========================================== */
+
+        function renderNavAvatar() {
+
+            const circle =
+                document.getElementById(
+                    "profileLetter"
+                );
+
+            const photo =
+                localStorage.getItem(
+                    "auralisPhoto"
+                );
+
+            const savedName =
+                localStorage.getItem(
+                    "auralisName"
+                );
+
+
+            /*
+             * If user has profile photo
+             */
+
+            if (photo) {
+
+                circle.innerHTML = `
+                    <img
+                        src="${photo}"
+                        alt="Profile"
+                        style="
+                            width:100%;
+                            height:100%;
+                            object-fit:cover;
+                            border-radius:50%;
+                        "
+                    >
+                `;
+
+            }
+
+
+            /*
+             * Otherwise show first letter
+             */
+
+            else if (savedName) {
+
+                circle.textContent =
+                    savedName
+                        .charAt(0)
+                        .toUpperCase();
+
+            }
+
+        }
+
+
+
+        renderNavAvatar();
+
+
+
+        /* =========================================
+           WELCOME MESSAGE
+        ========================================== */
+
+        const userName =
+            localStorage.getItem(
+                "auralisName"
+            );
+
+        const isNewUser =
+            localStorage.getItem(
+                "isNewUser"
+            );
+
+        const welcome =
+            document.getElementById(
+                "welcomeMessage"
+            );
+
+
+        if (userName) {
+
+
+            /*
+             * New user
+             */
+
+            if (isNewUser === "true") {
+
+                welcome.innerHTML =
+                    "🎉 Welcome to Auralis, " +
+                    userName +
+                    "! Enjoy unlimited music.";
+
+
+                localStorage.setItem(
+                    "isNewUser",
+                    "false"
+                );
+
+            }
+
+
+            /*
+             * Returning user
+             */
+
+            else {
+
+                welcome.innerHTML =
+                    "👋 Welcome Back, " +
+                    userName +
+                    "! Ready for another music session?";
+
+            }
+
+        }
+
+    </script>
+
+
+
+    <!-- =========================================
+         HOME JAVASCRIPT
+         
+         This handles:
+         - iTunes API
+         - Song cards
+         - Search
+         - Like system
+         - Most Liked section
+         - Load More
+         - Player navigation
+    ========================================== -->
+
+    <script src="../js/home.js"></script>
+
+
+</body>
+
+</html>

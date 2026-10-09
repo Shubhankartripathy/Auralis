@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — Auralis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body class="auth-page centered-auth">
+
+    <a href="home.html" class="site-logo">
+        <img src="../banner/auralis.png" alt="Auralis logo" class="site-logo-img">
+        <span>Auralis</span>
+    </a>
+
+    <main class="centered-auth-wrap">
+        <div class="auth-card">
+
+            <div class="auth-heading centered">
+                <h2>Create your account</h2>
+                <p>Join Auralis and make every moment musical.</p>
+            </div>
+
+            <div class="provider-buttons">
+                <button type="button" class="provider-button" data-provider="google">
+                    <span class="provider-icon google-icon">G</span>
+                    <span>Sign up with Google</span>
+                </button>
+            </div>
+
+            <div class="auth-divider">
+                <span>OR</span>
+            </div>
+
+            <form id="signupForm" class="auth-form" novalidate>
+
+                <div class="form-group">
+                    <label for="signupName">Full name</label>
+                    <input
+                        type="text"
+                        id="signupName"
+                        name="name"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email address</label>
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="signupPassword"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            required
+                            minlength="8"
+                        >
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="signupPassword"
+                            aria-label="Show password"
+                        >Show</button>
+                    </div>
+
+                    <div class="password-strength">
+                        <div class="strength-bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span id="strengthText">Use 8 or more characters</span>
+                    </div>
+                </div>
+
+                <label class="terms-checkbox">
+                    <input type="checkbox" id="terms" required>
+                    <span class="custom-checkbox"></span>
+                    <span>
+                        I agree to the
+                        <a href="#" class="inline-link">Terms of Service</a>
+                        and
+                        <a href="#" class="inline-link">Privacy Policy</a>.
+                    </span>
+                </label>
+
+                <button type="submit" class="auth-submit">
+                    Create account
+                    <span>→</span>
+                </button>
+
+                <p class="auth-message" id="signupMessage"></p>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="login.html">Log in</a>
+            </p>
+
+        </div>
+    </main>
+
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>

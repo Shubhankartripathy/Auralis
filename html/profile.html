@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Auralis Profile</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/profile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="profile-navbar">
+
+        <div class="navbar-brand">
+
+            <img
+                src="../banner/auralis.png"
+                alt="Auralis"
+                class="navbar-logo"
+            >
+
+            <span>Auralis</span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="nav-home-btn"
+            onclick="goHome()"
+        >
+            Back to Home
+        </button>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <main class="profile-page">
+
+
+        <section class="profile-card">
+
+
+            <!-- =================================================
+                 PROFILE PHOTO
+            ================================================== -->
+
+            <div class="profile-photo-section">
+
+
+                <div class="profile-photo-wrapper">
+
+                    <img
+                        id="profilePhoto"
+                        class="profile-photo"
+                        alt="Profile Photo"
+                    >
+
+
+                    <!-- Edit button -->
+
+                    <label
+                        for="photoInput"
+                        class="photo-edit-btn"
+                        title="Change profile photo"
+                    >
+                        ✎
+                    </label>
+
+                </div>
+
+
+                <!-- Hidden file input -->
+
+                <input
+                    type="file"
+                    id="photoInput"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+
+                <label
+                    for="photoInput"
+                    class="change-photo-btn"
+                >
+                    Change Photo
+                </label>
+
+
+                <p
+                    id="photoMessage"
+                    class="photo-message"
+                ></p>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 USER INFORMATION
+            ================================================== -->
+
+            <div class="profile-information">
+
+                <h1 id="profileName">
+                    Auralis User
+                </h1>
+
+                <p id="profileEmail">
+                    Loading...
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DIVIDER
+            ================================================== -->
+
+            <div class="profile-divider"></div>
+
+
+
+            <!-- =================================================
+                 ACCOUNT INFO
+            ================================================== -->
+
+            <div class="account-info">
+
+                <div class="info-box">
+
+                    <span class="info-label">
+                        ACCOUNT
+                    </span>
+
+                    <strong>
+                        Auralis User
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <span class="info-label">
+                        STATUS
+                    </span>
+
+                    <strong id="accountStatus">
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BUTTONS
+            ================================================== -->
+
+            <div class="profile-actions">
+
+
+                <button
+                    type="button"
+                    class="back-home-btn"
+                    onclick="goHome()"
+                >
+                    Back to Home
+                </button>
+
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+                    Logout
+                </button>
+
+
+            </div>
+
+
+            <p
+                id="statusMessage"
+                class="status-message"
+            ></p>
+
+
+            <p class="profile-footer-text">
+                Your Auralis account information
+            </p>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PROFILE JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/profile.js"></script>
+
+</body>
+
+</html>

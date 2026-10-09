@@ -1,0 +1,713 @@
+/* =========================================================
+   AURALIS PROFILE
+   Professional Dark Glass UI
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(0, 255, 100, 0.07),
+            transparent 30%
+        ),
+        #101010;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.profile-navbar {
+
+    width: 100%;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 42px;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.navbar-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+.navbar-logo {
+
+    width: 48px;
+
+    height: 48px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 100, 0.18);
+
+}
+
+
+.navbar-brand span {
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+/* =========================================================
+   NAV HOME BUTTON
+========================================================= */
+
+.nav-home-btn {
+
+    padding: 11px 21px;
+
+    border-radius: 24px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+}
+
+
+.nav-home-btn:hover {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-color:
+        rgba(255, 255, 255, 0.22);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.profile-page {
+
+    min-height:
+        calc(100vh - 78px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding:
+        42px 20px 60px;
+
+}
+
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.profile-card {
+
+    width: 100%;
+
+    max-width: 530px;
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(38, 38, 38, 0.92),
+            rgba(22, 22, 22, 0.96)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.45),
+        0 0 45px rgba(0, 255, 100, 0.07);
+
+}
+
+
+/* =========================================================
+   PHOTO SECTION
+========================================================= */
+
+.profile-photo-section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   PHOTO WRAPPER
+========================================================= */
+
+.profile-photo-wrapper {
+
+    position: relative;
+
+    width: 140px;
+
+    height: 140px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
+
+.profile-photo {
+
+    width: 140px;
+
+    height: 140px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #181818;
+
+    border:
+        2px solid rgba(0, 255, 100, 0.7);
+
+    box-shadow:
+        0 0 0 7px rgba(0, 255, 100, 0.04),
+        0 0 28px rgba(0, 255, 100, 0.15);
+
+}
+
+
+/* =========================================================
+   PHOTO EDIT BUTTON
+========================================================= */
+
+.photo-edit-btn {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 2px;
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #1ed760;
+
+    color: #000000;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.35);
+
+    transition: 0.2s ease;
+
+}
+
+
+.photo-edit-btn:hover {
+
+    transform: scale(1.08);
+
+    background: #20e866;
+
+}
+
+
+/* =========================================================
+   CHANGE PHOTO
+========================================================= */
+
+.change-photo-btn {
+
+    min-width: 190px;
+
+    padding: 10px 22px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+}
+
+
+.change-photo-btn:hover {
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-color:
+        rgba(255, 255, 255, 0.3);
+
+}
+
+
+/* =========================================================
+   PHOTO MESSAGE
+========================================================= */
+
+.photo-message {
+
+    min-height: 18px;
+
+    margin-top: 9px;
+
+    color: #1ed760;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.profile-information {
+
+    text-align: center;
+
+    margin-top: 4px;
+
+}
+
+
+.profile-information h1 {
+
+    margin-top: 0;
+
+    font-size: 31px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.7px;
+
+}
+
+
+.profile-information p {
+
+    margin-top: 10px;
+
+    color: #a9a9a9;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.profile-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        34px 0 30px;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+}
+
+
+/* =========================================================
+   ACCOUNT INFO
+========================================================= */
+
+.account-info {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+}
+
+
+.info-box {
+
+    padding: 17px;
+
+    text-align: center;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+
+.info-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #858585;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+}
+
+
+.info-box strong {
+
+    color: #eeeeee;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.profile-actions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================================================
+   BACK HOME
+========================================================= */
+
+.back-home-btn {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #1ed760;
+
+    color: #000000;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+}
+
+
+.back-home-btn:hover {
+
+    background: #20e866;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 22px rgba(30, 215, 96, 0.15);
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-btn {
+
+    width: 100%;
+
+    height: 48px;
+
+    border-radius: 25px;
+
+    border:
+        1px solid rgba(255, 70, 70, 0.3);
+
+    background:
+        rgba(255, 60, 60, 0.07);
+
+    color: #ff6464;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+}
+
+
+.logout-btn:hover {
+
+    background:
+        rgba(255, 60, 60, 0.14);
+
+    border-color:
+        rgba(255, 70, 70, 0.5);
+
+}
+
+
+.logout-btn:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =========================================================
+   STATUS MESSAGE
+========================================================= */
+
+.status-message {
+
+    min-height: 18px;
+
+    margin-top: 17px;
+
+    text-align: center;
+
+    color: #1ed760;
+
+    font-size: 13px;
+
+}
+
+
+.status-message.error {
+
+    color: #ff6464;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.profile-footer-text {
+
+    margin-top: 16px;
+
+    text-align: center;
+
+    color: #555555;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .profile-navbar {
+
+        height: 70px;
+
+        padding: 0 18px;
+
+    }
+
+
+    .navbar-logo {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .navbar-brand span {
+
+        font-size: 23px;
+
+    }
+
+
+    .nav-home-btn {
+
+        padding: 9px 14px;
+
+        font-size: 12px;
+
+    }
+
+
+    .profile-page {
+
+        padding:
+            25px 15px 40px;
+
+    }
+
+
+    .profile-card {
+
+        padding: 30px 22px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .profile-information h1 {
+
+        font-size: 26px;
+
+    }
+
+
+    .account-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
